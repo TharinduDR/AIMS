@@ -29,9 +29,9 @@ from transformers.optimization import (
     get_polynomial_decay_schedule_with_warmup,
 )
 
-from config.model_args import T5Args
-from config.utils import sweep_config_to_sweep_values
-from t5.t5_utils import T5Dataset, load_hf_dataset
+from aims.config.model_args import T5Args
+from aims.config.utils import sweep_config_to_sweep_values
+from aims.t5.t5_utils import T5Dataset, load_hf_dataset
 
 try:
     import wandb
