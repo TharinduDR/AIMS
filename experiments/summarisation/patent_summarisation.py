@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from datasets import Dataset
 from datasets import load_dataset
 from aims.config.model_args import T5Args
-from experiments.evaluation import bleu, ter
+from experiments.summarisation.evaluation import bleu
 
 from aims.t5.t5_model import T5Model
 
