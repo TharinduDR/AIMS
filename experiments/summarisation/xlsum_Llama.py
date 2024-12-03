@@ -15,8 +15,7 @@ test = data.iloc[:10000]
 train = data.iloc[10000:]
 
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-login()
-#Token: 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
+
 
 model = "meta-llama/Meta-Llama-3.1-8B-Instruct",
 model_representation = model_name.replace('/', '-')
