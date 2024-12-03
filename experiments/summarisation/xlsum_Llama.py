@@ -17,12 +17,12 @@ train = data.iloc[10000:]
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 
-model = "meta-llama/Meta-Llama-3.1-8B-Instruct",
+model_name = "meta-llama/Meta-Llama-3.1-8B-Instruct",
 model_representation = model_name.replace('/', '-')
 
 mdlPipeline = pipeline(
     "text-generation",
-    model=model,
+    model=model_name,
     model_kwargs={"torch_dtype": torch.bfloat16},
     device_map='auto',
 )
