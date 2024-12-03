@@ -14,4 +14,6 @@ module add cuda/12.0
 source activate /storage/hpc/37/ranasint/conda_envs/transformer_exp
 export HF_HOME=/scratch/hpc/37/ranasint/hf_cache
 
+huggingface-cli login
+
 python -m experiments.summarisation.xlsum_Llama
