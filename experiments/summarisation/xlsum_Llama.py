@@ -21,6 +21,8 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 model_name = "meta-llama/Llama-3.1-8B-Instruct"
 model_representation = model_name.replace('/', '-')
 
+os.makedirs(os.path.join("outputs_xlsum", model_representation), exist_ok=True)
+
 mdlPipeline = pipeline(
     "text-generation",
     model=model_name,
