@@ -16,7 +16,7 @@ model_type = "t5"
 
 model_representation = model_name.replace('/', '-')
 
-
+os.makedirs(os.path.join("outputs", model_representation), exist_ok=True)
 SEED = 777
 
 data = Dataset.to_pandas(load_dataset('tharindu/patents', split='train'))
