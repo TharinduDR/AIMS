@@ -18,7 +18,7 @@ train = data.iloc[10000:]
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 
-model_name = "meta-llama/Meta-Llama-3.1-8B-Instruct"
+model_name = "meta-llama/Llama-3.2-1B-Instruct"
 model_representation = model_name.replace('/', '-')
 
 mdlPipeline = pipeline(
