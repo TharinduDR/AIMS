@@ -18,8 +18,8 @@ full = Dataset.to_pandas(load_dataset('tharindu/meta-8b-incontext-xlsum-summary'
 train, test = train_test_split(full, test_size=0.2)
 
 
-train = train.rename(columns={'Value': 'text', 'labels': 'AI'}).dropna()
-test = test.rename(columns={'Value': 'text', 'labels': 'AI'}).dropna()
+train = train.rename(columns={'Value': 'text', 'AI': 'labels'}).dropna()
+test = test.rename(columns={'Value': 'text', 'AI': 'labels'}).dropna()
 
 test_sentences = test['text'].tolist()
 
