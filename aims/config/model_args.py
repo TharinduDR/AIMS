@@ -141,7 +141,7 @@ class ModelArgs:
 
 
 @dataclass
-class ClassificationArgs(ModelArgs):
+class TextClassificationArgs(ModelArgs):
     """
     Model args for a ClassificationModel
     """
