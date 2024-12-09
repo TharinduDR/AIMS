@@ -42,26 +42,20 @@ input_list = test['description'].tolist()
 truth_list = test['abstract'].tolist()
 
 for index, row in tqdm(test.iterrows(), total=len(test), desc="Generating Summaries"):
-    random_samples = train.sample(n=2)  # Set random_state for reproducibility
+    random_sample = train.sample(n=1)  # Set random_state for reproducibility if needed
+    text1 = random_sample['description'].iloc[0]
+    summary1 = random_sample['abstract'].iloc[0]
 
-    text1, text2 = random_samples['description'].tolist()
-    summary1, summary2 = random_samples['abstract'].tolist()
     text = row['description']
 
     systemPrompt = f"""
-    Here are two examples of a patent and its summary. Using these examples, respond to the next message with a summary of the given patent as a short paragraph.
+    Here is an example of a patent and its summary. Using this example, respond to the next message with a summary of the given patent as a short paragraph.
 
     Patent 1:
     {text1}
 
     Summary 1:
     {summary1}
-
-    Patent 2:
-    {text2}
-
-    Summary 2:
-    {summary2}
 
     USE NO LISTS OR BULLET POINTS.
     """
