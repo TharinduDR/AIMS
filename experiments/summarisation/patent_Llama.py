@@ -11,12 +11,8 @@ import pandas as pd
 from tqdm import tqdm
 #logging.set_verbosity_debug()
 
-data = Dataset.to_pandas(load_dataset("csebuetnlp/xlsum", "english", split='train'))
+data = Dataset.to_pandas(load_dataset("tharindu/patents", "english", split='train'))
 
-def count_tokens(input_text):
-    return len(str(input_text).split())
-# Filter the training set for rows where 'summary' has more than 20 tokens
-data = data[data['summary'].apply(count_tokens) > 20]
 
 test = data.iloc[:10000]
 train = data.iloc[10000:]
@@ -50,7 +46,7 @@ for index, row in tqdm(test.iterrows(), total=len(test), desc="Generating Summar
 
     text1, text2 = random_samples['description'].tolist()
     summary1, summary2 = random_samples['abstract'].tolist()
-    text = row['text']
+    text = row['description']
 
     systemPrompt = f"""
     Here are two examples of a patent and its summary. Using these examples, respond to the next message with a summary of the given patent as a short paragraph.
