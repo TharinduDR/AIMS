@@ -12,6 +12,11 @@ import pandas as pd
 
 data = Dataset.to_pandas(load_dataset("csebuetnlp/xlsum", "english", split='train'))
 
+def count_tokens(input_text):
+    return len(str(input_text).split())
+# Filter the training set for rows where 'summary' has more than 20 tokens
+data = data[data['summary'].apply(count_tokens) > 20]
+
 test = data.iloc[:10000]
 train = data.iloc[10000:]
 
@@ -30,11 +35,9 @@ mdlPipeline = pipeline(
     device_map='auto',
 )
 
-def count_tokens(input_text):
-    return len(str(input_text).split())
 
 # Filter the training set for rows where 'summary' has more than 30 tokens
-filtered_train = train[train['summary'].apply(count_tokens) > 30]
+# filtered_train = train[train['summary'].apply(count_tokens) > 30]
 
 
 predictions = []
@@ -42,14 +45,14 @@ input_list = test['text'].tolist()
 truth_list = test['summary'].tolist()
 
 for index, row in test.iterrows():
-    random_samples = filtered_train.sample(n=2)  # Set random_state for reproducibility
+    random_samples = train.sample(n=2)  # Set random_state for reproducibility
 
     text1, text2 = random_samples['text'].tolist()
     summary1, summary2 = random_samples['summary'].tolist()
     text = row['text']
 
     systemPrompt = f"""
-    Here are two examples of an article and its summary. Using these examples, respond to the next message with a summary of the given article as a short paragraph with TWO sentences at most. Do NOT go over this limit.
+    Here are two examples of an article and its summary. Using these examples, respond to the next message with a summary of the given article as a short paragraph with ONE or TWO sentences at most. Do NOT go over this limit.
 
     Article 1:
     {text1}
