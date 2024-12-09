@@ -16,4 +16,4 @@ export HF_HOME=/scratch/hpc/37/ranasint/hf_cache
 
 huggingface-cli login --token
 
-python -m experiments.summarisation.xlsum_Llama
+python -m experiments.summarisation.patent_Llama
