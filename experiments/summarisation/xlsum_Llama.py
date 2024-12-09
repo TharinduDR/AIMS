@@ -8,6 +8,7 @@ import os
 from datasets import Dataset
 from datasets import load_dataset
 import pandas as pd
+from tqdm import tqdm
 #logging.set_verbosity_debug()
 
 data = Dataset.to_pandas(load_dataset("csebuetnlp/xlsum", "english", split='train'))
@@ -44,7 +45,7 @@ predictions = []
 input_list = test['text'].tolist()
 truth_list = test['summary'].tolist()
 
-for index, row in test.iterrows():
+for index, row in tqdm(test.iterrows(), total=len(test), desc="Generating Summaries"):
     random_samples = train.sample(n=2)  # Set random_state for reproducibility
 
     text1, text2 = random_samples['text'].tolist()
