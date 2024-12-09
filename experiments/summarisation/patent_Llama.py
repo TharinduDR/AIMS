@@ -11,7 +11,7 @@ import pandas as pd
 from tqdm import tqdm
 #logging.set_verbosity_debug()
 
-data = Dataset.to_pandas(load_dataset("tharindu/patents", "english", split='train'))
+data = Dataset.to_pandas(load_dataset("tharindu/patents", split='train'))
 
 
 test = data.iloc[:10000]
