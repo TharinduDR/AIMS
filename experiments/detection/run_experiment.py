@@ -16,8 +16,8 @@ model_type = "bert"
 
 dataset_name = "tharindu/xlsum-Llama-3.1-8B-incontext"
 
-full = Dataset.to_pandas(load_dataset(dataset_name, split='train'))
-train, test = train_test_split(full, test_size=0.2)
+train = Dataset.to_pandas(load_dataset(dataset_name, split='train', force_redownload=True))
+test = Dataset.to_pandas(load_dataset(dataset_name, split='test', force_redownload=True))
 
 
 train = train.rename(columns={'summary': 'text', 'AI': 'labels'}).dropna()
