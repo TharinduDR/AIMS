@@ -53,7 +53,7 @@ for index, row in tqdm(test.iterrows(), total=len(test), desc="Generating Summar
     text = row['text']
 
     systemPrompt = f"""
-    Here are two examples of an article and its summary. Using these examples, respond to the next message with a summary of the given article as a short paragraph with ONE or TWO sentences at most. Do NOT go over this limit.
+    Here are two examples of an article and its summary. Using these examples, respond to the next message with a summary of the given article as a short paragraph with ONE or TWO sentences at most. Do NOT go over this limit. You should sound like a human. 
 
     Article 1:
     {text1}
