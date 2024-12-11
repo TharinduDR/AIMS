@@ -24,7 +24,7 @@ train = data.iloc[10000:]
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 
-model_name = "meta-llama/Llama-3.1-8B-Instruct"
+model_name = "mistralai/Mistral-7B-Instruct-v0.3"
 model_representation = model_name.replace('/', '-')
 
 os.makedirs(os.path.join("outputs_xlsum", model_representation), exist_ok=True)
@@ -53,7 +53,7 @@ for index, row in tqdm(test.iterrows(), total=len(test), desc="Generating Summar
     text = row['text']
 
     systemPrompt = f"""
-    Here are two examples of an article and its summary. Using these examples, respond to the next message with a summary of the given article as a short paragraph with ONE or TWO sentences at most. Do NOT go over this limit. You should sound like a human. 
+    Here are two examples of an article and its summary. Using these examples, respond to the next message with a summary of the given article as a short paragraph with ONE or TWO sentences at most. Do NOT go over this limit. 
 
     Article 1:
     {text1}
