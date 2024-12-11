@@ -14,12 +14,14 @@ from experiments.detection.evaluation import macro_f1, weighted_f1
 model_name = "google-bert/bert-large-uncased"
 model_type = "bert"
 
-full = Dataset.to_pandas(load_dataset('tharindu/meta-8b-incontext-xlsum-summary', split='train'))
+dataset_name = "tharindu/xlsum-Llama-3.1-8B-incontext"
+
+full = Dataset.to_pandas(load_dataset(dataset_name, split='train'))
 train, test = train_test_split(full, test_size=0.2)
 
 
-train = train.rename(columns={'Value': 'text', 'AI': 'labels'}).dropna()
-test = test.rename(columns={'Value': 'text', 'AI': 'labels'}).dropna()
+train = train.rename(columns={'summary': 'text', 'AI': 'labels'}).dropna()
+test = test.rename(columns={'summary': 'text', 'AI': 'labels'}).dropna()
 
 test_sentences = test['text'].tolist()
 
@@ -51,14 +53,14 @@ for i in range(5):
     model_args.save_steps = 200
     model_args.regression = False
 
-    processed_model_name = model_name.split("/")[1]
+    processed_dataset_name = dataset_name.split("/")[1]
 
-    model_args.output_dir = os.path.join("outputs", "meta-8b-incontext-xlsum-summary", processed_model_name)
-    model_args.best_model_dir = os.path.join("outputs", "meta-8b-incontext-xlsum-summary", processed_model_name, "best_model")
-    model_args.cache_dir = os.path.join("cache_dir", "meta-8b-incontext-xlsum-summary", processed_model_name)
+    model_args.output_dir = os.path.join("outputs",  processed_dataset_name)
+    model_args.best_model_dir = os.path.join("outputs",  processed_dataset_name, "best_model")
+    model_args.cache_dir = os.path.join("cache_dir", processed_dataset_name)
 
     model_args.wandb_project = "AI Summary Detection"
-    model_args.wandb_kwargs = {"name": "meta-8b-incontext-xlsum-summary"}
+    model_args.wandb_kwargs = {"name": processed_dataset_name}
 
     if os.path.exists(model_args.output_dir) and os.path.isdir(model_args.output_dir):
         shutil.rmtree(model_args.output_dir)
