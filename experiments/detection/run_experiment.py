@@ -16,8 +16,8 @@ model_type = "bert"
 
 dataset_name = "tharindu/meta-llama-Llama-3.1-8B-incontext-xlsum"
 
-train = Dataset.to_pandas(load_dataset(dataset_name, split='train', force_redownload=True))
-test = Dataset.to_pandas(load_dataset(dataset_name, split='test', force_redownload=True))
+train = Dataset.to_pandas(load_dataset(dataset_name, split='train'))
+test = Dataset.to_pandas(load_dataset(dataset_name, split='test'))
 
 train = train.sample(frac=1)
 test = test.sample(frac=1)
