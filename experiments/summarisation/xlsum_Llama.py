@@ -24,7 +24,7 @@ train = data.iloc[10000:]
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 
-model_name = "mistralai/Mistral-7B-Instruct-v0.3"
+model_name = "meta-llama/Llama-3.1-8B-Instruct"
 model_representation = model_name.replace('/', '-')
 
 os.makedirs(os.path.join("outputs_xlsum", model_representation), exist_ok=True)
