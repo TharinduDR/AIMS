@@ -14,7 +14,7 @@ from experiments.detection.evaluation import macro_f1, weighted_f1
 model_name = "google-bert/bert-large-uncased"
 model_type = "bert"
 
-dataset_name = "tharindu/meta-llama-Llama-3.1-8B-incontext-xlsum"
+dataset_name = "tharindu/mistralai-Mistral-7B-Instruct-v0.3-incontext-xlsum"
 
 train = Dataset.to_pandas(load_dataset(dataset_name, split='train'))
 test = Dataset.to_pandas(load_dataset(dataset_name, split='test'))
