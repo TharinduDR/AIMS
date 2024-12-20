@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -p astro
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:2
 #SBATCH --mem=48G
 #SBATCH --time=24:00:00
 #SBATCH --cpus-per-task=1
@@ -16,4 +16,4 @@ export HF_HOME=/scratch/hpc/37/ranasint/hf_cache
 
 huggingface-cli login --token
 
-python -m experiments.summarisation.xlsum_Llama
+python -m experiments.summarisation.patent_Llama
