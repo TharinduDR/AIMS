@@ -32,7 +32,7 @@ mdlPipeline = pipeline(
     device_map='auto',
 )
 
-
+test = test[0:5000]
 # Filter the training set for rows where 'summary' has more than 30 tokens
 # filtered_train = train[train['summary'].apply(count_tokens) > 30]
 
