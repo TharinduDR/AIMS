@@ -32,7 +32,7 @@ mdlPipeline = pipeline(
     device_map='auto',
 )
 
-test = test[0:5000]
+test = test[5000:]
 # Filter the training set for rows where 'summary' has more than 30 tokens
 # filtered_train = train[train['summary'].apply(count_tokens) > 30]
 
@@ -87,6 +87,6 @@ data = {
 df = pd.DataFrame(data)
 
 # Save as a TSV file
-df.to_csv(os.path.join("outputs_patent", model_representation, "predictions.tsv"), sep='\t', encoding='utf-8', index=False)
+df.to_csv(os.path.join("outputs_patent", model_representation, "predictions_2.tsv"), sep='\t', encoding='utf-8', index=False)
 
 
